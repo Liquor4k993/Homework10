@@ -3,20 +3,33 @@ package me.liquor4k;
 import java.time.LocalDate;
 
 public class Main {
-        //Для Задачи 1
+        // Для Задачи 1
     public static void main(String[] args) {
-        System.out.println("Задание 1");
+        System.out.println("\n Задание 1");
         checkLeapYear(2024);
         checkLeapYear(2023);
         checkLeapYear(2000);
         checkLeapYear(1900);
 
         // Для Задачи 2
-        System.out.println("Задание 2");
+        System.out.println("\n Задание 2");
         suggestAppVersion(0, 2014); // iOS, старый телефон
         suggestAppVersion(1, 2023); // Android, новый телефон
         suggestAppVersion(0, 2024); // iOS, новый телефон
+
+        // Для задачи 3
+        System.out.println("\n Задание 3");
+        int[] testDistances = {15, 25, 65, 95, 105};
+
+        for (int distance : testDistances) {
+            int daysRequired = calculateDeliveryDays(distance);
+            if (daysRequired == -1) {
+                System.out.println("При расстоянии " + distance + " км: Доставки нет");
+            } else {
+                System.out.println("При расстоянии " + distance + " км: Потребуется дней: " + daysRequired);
             }
+        }
+    }
     // Задача 1 - Проверка високосного года
 
     public static void checkLeapYear(int year) {
@@ -59,5 +72,21 @@ public class Main {
         }
 
         System.out.println("Установите " + versionType + " версию приложения для " + osName + " по ссылке");
+    }
+    // Задача 3 - Расчет дней доставки
+    public static int calculateDeliveryDays(int deliveryDistance) {
+        int deliveryDays = 1;
+
+        if (deliveryDistance > 20) {
+            deliveryDays += 1;
+        }
+        if (deliveryDistance > 60) {
+            deliveryDays += 1;
+        }
+        if (deliveryDistance > 100) {
+            deliveryDays = -1; // доставки нет
+        }
+
+        return deliveryDays;
     }
 }
