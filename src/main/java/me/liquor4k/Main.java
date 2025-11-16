@@ -5,13 +5,20 @@ import java.time.LocalDate;
 public class Main {
         //Для Задачи 1
     public static void main(String[] args) {
+        System.out.println("Задание 1");
         checkLeapYear(2024);
         checkLeapYear(2023);
         checkLeapYear(2000);
         checkLeapYear(1900);
-            }
 
+        // Для Задачи 2
+        System.out.println("Задание 2");
+        suggestAppVersion(0, 2014); // iOS, старый телефон
+        suggestAppVersion(1, 2023); // Android, новый телефон
+        suggestAppVersion(0, 2024); // iOS, новый телефон
+            }
     // Задача 1 - Проверка високосного года
+
     public static void checkLeapYear(int year) {
         boolean isLeap = false;
 
@@ -28,5 +35,29 @@ public class Main {
         } else {
             System.out.println(year + " год — невисокосный год");
         }
+    }
+    // Задача 2 - Рекомендация версии приложения
+    public static void suggestAppVersion(int osType, int deviceYear) {
+        int currentYear = LocalDate.now().getYear();
+        String osName = "";
+        String versionType = "обычную";
+
+        if (deviceYear < currentYear) {
+            versionType = "облегченную";
+        }
+
+        switch (osType) {
+            case 0:
+                osName = "iOS";
+                break;
+            case 1:
+                osName = "Android";
+                break;
+            default:
+                System.out.println("Неизвестная операционная система");
+                return;
+        }
+
+        System.out.println("Установите " + versionType + " версию приложения для " + osName + " по ссылке");
     }
 }
